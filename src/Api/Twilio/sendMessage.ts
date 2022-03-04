@@ -1,4 +1,4 @@
-import twilioClient from './twilioCLient';
+import twilioClient from './twilioClient';
 
 const sendMessage = (from: string, to: string, message: string) =>
   twilioClient.messages.create({

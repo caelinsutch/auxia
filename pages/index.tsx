@@ -1,11 +1,12 @@
-import type { NextPage } from 'next'
 
-const Home: NextPage = () => {
-  return (
-    <>
-      Hi
-      </>
-  )
-}
+import React from 'react'
+import {StatCards, HomeBanner, PageContainer} from '../src/Components';
 
-export default Home
+const Home = () => (
+  <PageContainer>
+    <HomeBanner/>
+    <StatCards/>
+  </PageContainer>
+);
+
+export default Home;
