@@ -3,17 +3,17 @@ import {createPhoneNumber} from '../Twilio';
 import {Organization} from '../Types/Organization';
 
 const createOrganization = async (organizationName: string, organizationUniversity: string, ownerPhoneNumber: string, chosenPhoneNumber: string): Promise<Organization | boolean> => {
-    const newPhoneNumber = await createPhoneNumber(chosenPhoneNumber);
+    const newPhoneNumber = await createPhoneNumber("", organizationName, true);
     const newOrganization: Organization = {
         organizationId: newPhoneNumber,
         organizationName: organizationName,
         organizationUniversity: organizationUniversity,
         ownerUserId: ownerPhoneNumber,
-        adminPhoneNumbers: [],
+        adminPhoneNumbers: {},
         conversations: {}
     }
 
-    const organization = await organizationCollection.doc(newPhoneNumber).set(newOrganization)
+    const organization = await organizationCollection.doc(newPhoneNumber).set(newOrganization);
     if (!!organization) {
         return newOrganization;
     } else {

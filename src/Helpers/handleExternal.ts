@@ -1,5 +1,3 @@
-import {organizationCollection} from '../Firebase';
-import {Conversation, Organization} from '../Types/Organization';
 import getOrganization from "./getOrganization";
 import createConversation from "../Helpers/createConversation";
 import notifyAdmins from "./notifyAdmins";

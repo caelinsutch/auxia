@@ -4,7 +4,7 @@ import {Conversation} from '../Types/Organization';
 
 const createConversation = async (organizationId: string, phoneNumber: string): Promise<Conversation> => {
     const organizationDoc = organizationCollection.doc(organizationId);
-    const newPhoneNumber = await createPhoneNumber(phoneNumber);
+    const newPhoneNumber = await createPhoneNumber("", phoneNumber, false);
 
     const conversation: Conversation = {
         conversationLine: newPhoneNumber
