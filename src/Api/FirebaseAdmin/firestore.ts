@@ -1,5 +1,5 @@
 import { firestore } from "./admin";
-import {Conversation, Organization} from '../Types/Organization';
+import {Conversation, Organization} from '../../Types/Organization';
 import {CollectionReference} from 'firebase-admin/lib/firestore';
 
 const organizationCollection = firestore.collection("organizations") as CollectionReference<Organization>;

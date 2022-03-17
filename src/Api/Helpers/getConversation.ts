@@ -1,5 +1,5 @@
-import {Conversation} from '../Types/Organization';
-import {organizationCollection} from '../Firebase';
+import {Conversation} from '../../Types/Organization';
+import {organizationCollection} from '../FirebaseAdmin';
 
 const getConversation = async (organizationId: string, phoneNumber: string): Promise<Conversation> => {
     const organizationRef = await organizationCollection.doc(organizationId).get();

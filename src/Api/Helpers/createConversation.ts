@@ -1,6 +1,6 @@
-import {organizationCollection} from '../Firebase';
+import {organizationCollection} from '../FirebaseAdmin';
 import {createPhoneNumber} from '../Twilio';
-import {Conversation} from '../Types/Organization';
+import {Conversation} from '../../Types/Organization';
 
 const createConversation = async (organizationId: string, phoneNumber: string): Promise<Conversation> => {
     const organizationDoc = organizationCollection.doc(organizationId);
