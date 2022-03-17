@@ -1,3 +1,4 @@
+require('dotenv').config()
 import { Twilio } from "twilio";
 import {accountSid, authToken} from '../Constants';
 
