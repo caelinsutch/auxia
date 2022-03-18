@@ -9,6 +9,8 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@firebase/firestore": "^3.4.6",
+    "@types/firebase": "^3.2.1",
     "dotenv": "^16.0.0",
     "firebase-admin": "^10.0.2",
     "next": "12.1.0",

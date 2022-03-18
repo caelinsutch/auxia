@@ -1,7 +1,7 @@
 import {Organization} from "../Types/Organization";
 import {Response} from "../Types/Response";
 import {organizationCollection} from "../Firebase";
-import {arrayUnion, updateDoc} from "firebase/firestore";
+import {arrayUnion, updateDoc} from "@firebase/firestore";
 
 const addAdmin = async (organization: Organization, adminPhoneNumber: string, adminName: string): Promise<Response> => {
     // todo change Admins from an array of numbers to a mapping of numbers to names
