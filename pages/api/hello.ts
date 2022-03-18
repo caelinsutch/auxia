@@ -21,8 +21,10 @@ export default async function handler(
     // const convo = await createConversation("1", "2'");
     // console.log(convo);
 
-    const org = await createOrganization("testing org", "001312", "+15165517371", "")
-    console.log(org);
+
+
+    // const org = await createOrganization("testing org", "001312", "+15165517371", "")
+    // console.log(org);
     // await handleExternal("+15005550006", "+15165517371", "hello world")
 
 

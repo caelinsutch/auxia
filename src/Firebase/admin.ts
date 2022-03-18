@@ -1,13 +1,13 @@
 import * as firebaseAdmin from "firebase-admin";
 require("dotenv").config()
-import serviceAccount from "./key.json";
+// import serviceAccount from "./key.json";
 
 if (!firebaseAdmin?.apps?.length && firebaseAdmin) {
   firebaseAdmin.initializeApp({
     credential: firebaseAdmin.credential.cert({
       privateKey: process.env.FIREBASE_PRIVATE_KEY,
-      clientEmail: serviceAccount.client_email,
-      projectId: serviceAccount.project_id,
+      clientEmail: process.env.CLIENT_EMAIL,
+      projectId: process.env.PROJECT_ID,
     }),
     databaseURL: "https://flare-social.firebaseio.com",
   });
