@@ -9,6 +9,7 @@ import notifyAdmins from "./notifyAdmins";
  * @param {string} contents - the contents of the User's message to forward
 * */
 const handleExternal = async (organizationId: string, phoneNumber: string, contents: string) => {
+    // todo add return status
     const organization = await getOrganization(organizationId);
     let conversation = organization.conversations[phoneNumber];
     if (!conversation) { // the conversation does not exist
