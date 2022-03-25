@@ -40,7 +40,7 @@ export default async function handler(
     /*
     * Number directory
     *   newOrganization: generated
-    *   ownerPhoneNumber: 516
+    *   ownerPhoneNumber: 516/me
     *   newAdmin: ?
     *   testingNumber: (305) 209-8033
     *

@@ -54,12 +54,13 @@ export default async function handler(
     const OWNER_PHONE_NUMBER = "+15165517371";
     const TESTING_NUMBER = "+13052098033";
 
-    const newOrganization = await createOrganization("First", "1", "+15165517371", "");
-    if (typeof newOrganization === "object") { // if it has returned the new Organization object
-        const addAdminStatus = await addAdmin(newOrganization, OWNER_PHONE_NUMBER, "Ethan Testing");
-    }
+    // const newOrganization = await createOrganization("First", "1", "+15165517371", "");
+    // if (typeof newOrganization === "object") { // if it has returned the new Organization object
+    //     const addAdminStatus = await addAdmin(newOrganization, OWNER_PHONE_NUMBER, "Ethan Testing");
+    // }
 
-
+    const organization = await getOrganization("+15105748368");
+    console.log(organization);
 
     // const convo = await createConversation("1", "2'");
     // console.log(convo);
