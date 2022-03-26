@@ -64,6 +64,8 @@ export default async function handler(
     // const organization = await getOrganization("+15105748368");
     // console.log(organization);
 
+    console.log(process.env.PRIVATE_KEY_ID, process.env.FIREBASE_PRIVATE_KEY, process.env.FIREBASE_CLIENT_EMAIL, process.env.PROJECT_ID)
+
     await handleExternal(ORGANIZATION_ID, TESTING_NUMBER, "TESTING");
 
     // const convo = await createConversation("1", "2'");
