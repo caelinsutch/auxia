@@ -6,6 +6,7 @@ import addAdmin from "../../src/Helpers/addAdmin";
 import getOrganization from "../../src/Helpers/getOrganization";
 import removeAdmin from "../../src/Helpers/removeAdmin";
 import createConversation from "../../src/Helpers/createConversation";
+import handleExternal from "../../src/Helpers/handleExternal";
 // import handleExternal from "../../src/Helpers/handleExternal";
 // import conversationLineLookup from "../../src/Helpers/conversationLineLookup";
 // import handleResponse from "../../src/Helpers/handleResponse";
@@ -53,14 +54,17 @@ export default async function handler(
     * */
     const OWNER_PHONE_NUMBER = "+15165517371";
     const TESTING_NUMBER = "+13052098033";
+    const ORGANIZATION_ID = "+15105748368";
 
     // const newOrganization = await createOrganization("First", "1", "+15165517371", "");
     // if (typeof newOrganization === "object") { // if it has returned the new Organization object
     //     const addAdminStatus = await addAdmin(newOrganization, OWNER_PHONE_NUMBER, "Ethan Testing");
     // }
 
-    const organization = await getOrganization("+15105748368");
-    console.log(organization);
+    // const organization = await getOrganization("+15105748368");
+    // console.log(organization);
+
+    await handleExternal(ORGANIZATION_ID, TESTING_NUMBER, "TESTING");
 
     // const convo = await createConversation("1", "2'");
     // console.log(convo);

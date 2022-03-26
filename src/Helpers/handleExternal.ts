@@ -11,9 +11,13 @@ import notifyAdmins from "./notifyAdmins";
 const handleExternal = async (organizationId: string, phoneNumber: string, contents: string) => {
     // todo add return status
     const organization = await getOrganization(organizationId);
+    console.log(organization)
     let conversation = organization.conversations[phoneNumber];
+    console.log(conversation)
     if (!conversation) { // the conversation does not exist
+        console.log("convo not found")
         conversation = await createConversation(organizationId, phoneNumber);
+        console.log(conversation)
     }
     await notifyAdmins(organization, conversation, contents);
 }

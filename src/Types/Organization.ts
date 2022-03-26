@@ -12,4 +12,5 @@ export type Organization = {
     ownerUserId: string; // User ID/phone number of owner
     adminPhoneNumbers: { [key:string]: Admin }; // Phone numbers of Admin mapped to name
     conversations: Record<string, Conversation>; // Map of incoming phone numbers to conversations
+    messagePrefix: string // what to send to a User before forwarding an admin's message
 }
