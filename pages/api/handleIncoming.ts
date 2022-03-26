@@ -51,6 +51,10 @@ export default async function handler(
     const from = req.body.From;
     const body = req.body.Body;
     const to = req.body.To;
+    console.log(from, body, to);
+    if (!from || !body || !to) {
+        return res.json({name: "error", data: "incomplete request"})
+    }
     await handleExternal(to, from, body);
     const data = {res: "yes", from, body, to};
     res.json({name: "response", data})
