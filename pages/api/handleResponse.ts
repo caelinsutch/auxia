@@ -20,6 +20,9 @@ export default async function handler(
     }
 
     console.log("new response request");
+    if (!req.body.From || !req.body.Body || !req.body.To) {
+        return res.json({name: "error", data: "incomplete request"})
+    }
     const from = JSON.parse(req.body.From);
     const body = JSON.parse(req.body.Body);
     const to = JSON.parse(req.body.To);

@@ -11,7 +11,7 @@ const createPhoneNumber = async (chosenNumber: string = "", lineWith: string, is
         smsUrl = "https://auxia-production.up.railway.app/api/handleIncoming"
     } else {
         friendlyName = `TEXT LINE with ${ lineWith }`;
-        smsUrl = "https://auxia-production.up.railway.app/api/handleExternal";
+        smsUrl = "https://auxia-production.up.railway.app/api/handleResponse";
     }
 
     if (chosenNumber) {
