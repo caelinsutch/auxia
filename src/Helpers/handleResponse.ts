@@ -20,11 +20,13 @@ const handleResponse = async (conversationLine: string, phoneNumber: string, con
         return;
     }
     const organizationId = data.organizationId;
+    console.log(organizationId)
     const userNumber = data.userNumber;
-
-    const organization = await getOrganization(data.organizationId);
+    console.log("GOT CL:", data.userNumber);
+    console.log("GOT orgID:", organizationId);
+    const organization = await getOrganization(organizationId);
     const admin = organization.adminPhoneNumbers[phoneNumber];
-
+    console.log(admin)
     if (admin) { // the number responding is an Admin
         const conversation = organization.conversations[phoneNumber]
         await sendMessage(organization.organizationId, userNumber, contents); // send message from the Admin to the User

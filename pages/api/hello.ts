@@ -7,6 +7,7 @@ import getOrganization from "../../src/Helpers/getOrganization";
 import removeAdmin from "../../src/Helpers/removeAdmin";
 import createConversation from "../../src/Helpers/createConversation";
 import handleExternal from "../../src/Helpers/handleExternal";
+import conversationLineLookup from "../../src/Helpers/conversationLineLookup";
 // import handleExternal from "../../src/Helpers/handleExternal";
 // import conversationLineLookup from "../../src/Helpers/conversationLineLookup";
 // import handleResponse from "../../src/Helpers/handleResponse";
@@ -14,6 +15,17 @@ import handleExternal from "../../src/Helpers/handleExternal";
 type Data = {
     name: string
 }
+
+// todo include images too
+// if they send a photo reply we can't see it
+// 2-3 weeks to release number
+
+// analytics
+// number of users at fraternity
+// # of users which
+// store times messages were sent
+// average response time, per house
+//
 
 export default async function handler(
     req: NextApiRequest,
@@ -64,29 +76,12 @@ export default async function handler(
     // const organization = await getOrganization("+15105748368");
     // console.log(organization);
 
-    console.log(process.env.PRIVATE_KEY_ID, process.env.FIREBASE_PRIVATE_KEY, process.env.FIREBASE_CLIENT_EMAIL, process.env.PROJECT_ID)
+    // console.log(process.env.PRIVATE_KEY_ID, process.env.FIREBASE_PRIVATE_KEY, process.env.FIREBASE_CLIENT_EMAIL, process.env.PROJECT_ID)
+    //
+    // await handleExternal(ORGANIZATION_ID, TESTING_NUMBER, "TESTING");
 
-    await handleExternal(ORGANIZATION_ID, TESTING_NUMBER, "TESTING");
+    const line = await conversationLineLookup("+15108718808");
+    console.log(line)
 
-    // const convo = await createConversation("1", "2'");
-    // console.log(convo);
-
-    // const orgId = "+15104053926";
-    // const org = await getOrganization(orgId);
-    // const admin = await addAdmin(org, "+15165517371", "Ethan");
-
-    // const org = await createOrganization("testing org", "001312", "+15165517371", "")
-    // console.log(org);
-    // await handleExternal("+15005550006", "+15165517371", "hello world")
-
-
-    // const conversationLine = "555"; // conversationLine
-    // response = await conversationLineLookup(conversationLine);
-    // // @ts-ignore
-    // const organizationId = response.data["organizationId"];
-    // // @ts-ignore
-    // const userNumber = response.data["userNumber"];
-    // console.log(organizationId, userNumber);
-    // await handleResponse(conversationLine, response.data, "testing")
     res.json({name: "response", ...response})
 }
