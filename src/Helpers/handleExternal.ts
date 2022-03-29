@@ -1,6 +1,7 @@
 import getOrganization from "./getOrganization";
 import createConversation from "../Helpers/createConversation";
 import notifyAdmins from "./notifyAdmins";
+import { sendMessage } from "../Twilio";
 
 /**
  * Forwards all incoming messages from a User to an Organization's Main Line to the Organization's Admins
@@ -17,6 +18,7 @@ const handleExternal = async (organizationId: string, phoneNumber: string, conte
     if (!conversation) { // the conversation does not exist
         console.log("convo not found")
         conversation = await createConversation(organizationId, phoneNumber);
+        await sendMessage(phoneNumber, organizationId, "Your message has been received! An admin will reply shortly.")
         console.log(conversation)
     }
     await notifyAdmins(organization, conversation, contents);

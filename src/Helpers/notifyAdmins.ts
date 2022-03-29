@@ -8,7 +8,7 @@ const notifyAdmins = async (organization: Organization,
     let status = true;
     for (const number in organization.adminPhoneNumbers) {
         if (number !== sender) { // check to make sure to not send a response from an Admin to themselves
-            const msg = await sendMessage(conversation.conversationLine, number, contents) // from, to, contents
+            const msg = await sendMessage(conversation.conversationLine, number, `Text line message: ${contents}`) // from, to, contents
             if (!msg) {
                 status = false;
                 break;

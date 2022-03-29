@@ -23,9 +23,9 @@ export default async function handler(
     if (!req.body.From || !req.body.Body || !req.body.To) {
         return res.json({name: "error", data: "incomplete request"})
     }
-    const from = JSON.parse(req.body.From);
-    const body = JSON.parse(req.body.Body);
-    const to = JSON.parse(req.body.To);
+    const from = req.body.From;
+    const body = req.body.Body;
+    const to = req.body.To;
     console.log(from, body, to);
     if (!from || !body || !to) {
         return res.json({name: "error", data: "incomplete request"})

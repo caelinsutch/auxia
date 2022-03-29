@@ -29,7 +29,7 @@ const handleResponse = async (conversationLine: string, phoneNumber: string, con
     console.log(admin)
     if (admin) { // the number responding is an Admin
         const conversation = organization.conversations[phoneNumber]
-        await sendMessage(organization.organizationId, userNumber, contents); // send message from the Admin to the User
+        await sendMessage(organization.organizationId, userNumber, `${organization.messagePrefix} ${contents}`); // send message from the Admin to the User
         return await notifyAdmins( // notify other Admins that one Admin has already sent a response
             organization,
             conversation,
