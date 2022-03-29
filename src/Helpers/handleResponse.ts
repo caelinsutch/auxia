@@ -13,7 +13,9 @@ import {Admin} from "../Types/Admin";
 const handleResponse = async (conversationLine: string, phoneNumber: string, contents: string) => {
     console.log("CALLING HANDLE RESPONSE")
     let data;
-    const response = await conversationLineLookup(JSON.parse(conversationLine));
+    console.log(conversationLine);
+    const response = await conversationLineLookup(conversationLine);
+    console.log(response);
     if (response.status) {
         data = response.data;
     } else {
