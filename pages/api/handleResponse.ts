@@ -1,6 +1,7 @@
 // Next.js API route support: https://nextjs.org/docs/api-routes/introduction
 import type {NextApiRequest, NextApiResponse} from 'next'
 import handleResponse from "../../src/Helpers/handleResponse";
+import {twiml} from "twilio";
 // import createConversation from "../../src/Helpers/createConversation";
 // import handleExternal from "../../src/Helpers/handleExternal";
 // import conversationLineLookup from "../../src/Helpers/conversationLineLookup";
@@ -32,5 +33,6 @@ export default async function handler(
     }
     await handleResponse(to, from, body);
     const data = {res: "yes", from, body, to};
-    res.json({name: "response", data})
+    res.writeHead(200, { "Content-Type": "text/xml" });
+    return res.end(twiml.toString());
 }
