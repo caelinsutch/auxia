@@ -18,7 +18,7 @@ const handleExternal = async (organizationId: string, phoneNumber: string, conte
     if (!conversation) { // the conversation does not exist
         console.log("convo not found")
         conversation = await createConversation(organizationId, phoneNumber);
-        await sendMessage(phoneNumber, organizationId, "Your message has been received! An admin will reply shortly.")
+        await sendMessage(organizationId, phoneNumber, "Your message has been received! An admin will reply shortly.")
         console.log(conversation)
     }
     await notifyAdmins(organization, conversation, contents);
