@@ -28,7 +28,7 @@ export default async function handler(
     const from = req.body.From;
     const body = req.body.Body;
     const to = req.body.To;
-    console.log(from, body, to);
+    console.log(to, from, body);
     if (!from || !body || !to) {
         console.log("INCOMPLETE REQ")
         return res.json({name: "error", data: "incomplete request"})

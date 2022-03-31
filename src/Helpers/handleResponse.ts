@@ -14,7 +14,7 @@ import getConversation from "./getConversation";
 const handleResponse = async (conversationLine: string, phoneNumber: string, contents: string) => {
     console.log("CALLING HANDLE RESPONSE")
     let data;
-    console.log(conversationLine);
+    console.log("conversationLine:", conversationLine);
     const response = await conversationLineLookup(conversationLine);
     console.log(response);
     if (response.status) {
@@ -29,8 +29,10 @@ const handleResponse = async (conversationLine: string, phoneNumber: string, con
     const userNumber = data.userNumber;
     console.log("GOT CL:", data.userNumber);
     console.log("GOT orgID:", organizationId);
+
     const organization = await getOrganization(organizationId);
     const admin = organization.adminPhoneNumbers[phoneNumber];
+
     console.log("adminPhoneNumbers:", organization.adminPhoneNumbers);
     console.log("phoneNumber:", phoneNumber);
     console.log("admin: ", admin)
@@ -43,7 +45,7 @@ const handleResponse = async (conversationLine: string, phoneNumber: string, con
         const notif = await notifyAdmins(
             organization,
             conversationLine,
-            `ADMIN RESPONSE SENT FROM ${ admin.name }:\n${contents}`,
+            `ADMIN RESPONSE SENT FROM ${ phoneNumber }:\n${contents}`,
             phoneNumber
         );
         return notif && msg;
