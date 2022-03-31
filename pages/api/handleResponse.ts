@@ -35,5 +35,7 @@ export default async function handler(
     }
     await handleResponse(to, from, body);
     res.writeHead(200, { "Content-Type": "text/xml" });
+    console.log("twiml")
+    console.log(twiml.toString())
     return res.end(twiml.toString());
 }

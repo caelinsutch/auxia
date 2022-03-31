@@ -11,8 +11,8 @@ if (!firebaseAdmin?.apps?.length && firebaseAdmin) {
             "project_id": "auxia-app",
             "private_key_id": process.env.PRIVATE_KEY_ID,
             // @ts-ignore
-            "private_key": JSON.parse(process.env.FIREBASE_PRIVATE_KEY),
-            // "private_key": process.env.FIREBASE_PRIVATE_KEY,
+            // "private_key": JSON.parse(process.env.FIREBASE_PRIVATE_KEY),
+            "private_key": process.env.FIREBASE_PRIVATE_KEY,
             "client_email": process.env.FIREBASE_CLIENT_EMAIL,
             "client_id": process.env.PROJECT_ID,
             "auth_uri": "https://accounts.google.com/o/oauth2/auth",
