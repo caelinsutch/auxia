@@ -3,9 +3,10 @@ import sendMessage from "../Twilio/sendMessage";
 import conversationLineLookup from "./conversationLineLookup";
 import notifyAdmins from "./notifyAdmins";
 import {Admin} from "../Types/Admin";
+import getConversation from "./getConversation";
 
 /**
- * Handles Admins replying to a User through a Main Line number
+ * Handles Admins replying to a User through a Conversation Line number
  * @param {string} conversationLine - the conversationLine number receiving a message
  * @param {string} phoneNumber - the phone number who has replied to a User, check for if they are an Admin
  * @param {string} contents - the contents of the Admin's message to forward
@@ -32,12 +33,14 @@ const handleResponse = async (conversationLine: string, phoneNumber: string, con
     const admin = organization.adminPhoneNumbers[phoneNumber];
     console.log(admin)
     if (admin) { // the number responding is an Admin
-        const conversation = organization.conversations[phoneNumber]
+        const conversation = organization.conversations[userNumber].conversationLine
+        console.log("CONVERSATION:", conversation);
+        console.log("SENDING TO ADMINS FROM", conversationLine);
         const msg = await sendMessage(organization.organizationId, userNumber, `${organization.messagePrefix} ${contents}`); // send message from the Admin to the User
         // notify other Admins that one Admin has already sent a response
         const notif = await notifyAdmins(
             organization,
-            conversation.conversationLine,
+            conversationLine,
             `ADMIN RESPONSE SENT FROM ${ admin.name }:\n${contents}`,
             phoneNumber
         );
