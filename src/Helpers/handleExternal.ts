@@ -21,7 +21,7 @@ const handleExternal = async (organizationId: string, phoneNumber: string, conte
         await sendMessage(organizationId, phoneNumber, "Your message has been received! An admin will reply shortly.")
         console.log(conversation)
     }
-    await notifyAdmins(organization, conversation, contents);
+    await notifyAdmins(organization, conversation.conversationLine, contents);
 }
 
 export default handleExternal;
