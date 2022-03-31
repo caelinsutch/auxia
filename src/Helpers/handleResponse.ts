@@ -37,7 +37,7 @@ const handleResponse = async (conversationLine: string, phoneNumber: string, con
         // notify other Admins that one Admin has already sent a response
         const notif = await notifyAdmins(
             organization,
-            conversation,
+            conversation.conversationLine,
             `ADMIN RESPONSE SENT FROM ${ admin.name }:\n${contents}`,
             phoneNumber
         );
