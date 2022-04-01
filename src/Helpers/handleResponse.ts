@@ -31,19 +31,20 @@ const handleResponse = async (conversationLine: string, phoneNumber: string, con
     console.log("GOT orgID:", organizationId);
 
     const organization = await getOrganization(organizationId);
-
+    const adminPhoneNumbers = organization.adminPhoneNumbers;
     console.log("adminPhoneNumbers:", organization.adminPhoneNumbers);
     console.log("typeof phoneNumber", typeof phoneNumber);
     console.log("phoneNumber:");
     console.log(phoneNumber);
+    for (const number in adminPhoneNumbers) {
+        console.log(`TEST: ${ number } === ${ phoneNumber } : ${ number === phoneNumber }`)
+    }
+    console.log(Object.keys(organization.adminPhoneNumbers).indexOf(phoneNumber));
+    console.log(organization.adminPhoneNumbers.phoneNumber)
 
-    console.log(Object.keys(organization.adminPhoneNumbers));
-    console.log(organization.adminPhoneNumbers[phoneNumber])
+    const admin = organization.adminPhoneNumbers.phoneNumber;
 
-    const admin = organization.adminPhoneNumbers[phoneNumber];
-
-
-    console.log("admin: ", admin);
+    console.log("admin:", admin);
     if (admin) { // the number responding is an Admin
         const conversation = organization.conversations[userNumber].conversationLine
         console.log("CONVERSATION:", conversation);
@@ -53,7 +54,7 @@ const handleResponse = async (conversationLine: string, phoneNumber: string, con
         const notif = await notifyAdmins(
             organization,
             conversationLine,
-            `ADMIN RESPONSE SENT FROM ${ phoneNumber }:\n${contents}`,
+            `ADMIN RESPONSE SENT FROM ${ admin }:\n${contents}`,
             phoneNumber
         );
         return notif && msg;

@@ -13,7 +13,7 @@ const notifyAdmins = async (organization: Organization,
             console.log("sending msg to:", number)
             const msg = await sendMessage(conversation, number, `Text line message: ${contents}`) // from, to, contents
         } else {
-            console.log("sender is themselves", sender, number)
+            console.log("check is the same, not sending", sender, number)
         }
     }
     return status;
