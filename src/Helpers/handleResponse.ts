@@ -41,9 +41,9 @@ const handleResponse = async (conversationLine: string, phoneNumber: string, con
         console.log(`TEST: ${ number } === ${ phoneNumber } : ${ number === phoneNumber }`)
     }
     console.log(Object.keys(organization.adminPhoneNumbers).indexOf(phoneNumber));
-    console.log(organization.adminPhoneNumbers.phoneNumber)
+    console.log(organization.adminPhoneNumbers[phoneNumber])
 
-    const admin = organization.adminPhoneNumbers.phoneNumber;
+    const admin = organization.adminPhoneNumbers[phoneNumber];
 
     console.log("admin:", admin);
     if (admin) { // the number responding is an Admin
