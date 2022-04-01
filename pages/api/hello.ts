@@ -81,7 +81,7 @@ export default async function handler(
     // await handleExternal(ORGANIZATION_ID, TESTING_NUMBER, "TESTING");
 
     const line = await conversationLineLookup("+15108718808");
-    console.log(line)
+    // console.log(line)
 
     res.json({name: "response", ...response})
 }

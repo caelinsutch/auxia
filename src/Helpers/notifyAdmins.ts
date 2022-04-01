@@ -6,14 +6,12 @@ const notifyAdmins = async (organization: Organization,
                             contents: string,
                             sender: string = ""): Promise<boolean> => {
     let status = true;
-    console.log("NOTIFYING ADMINS", organization.organizationId, conversation, contents, sender)
+    // console.log("NOTIFYING ADMINS", organization.organizationId, conversation, contents, sender)
     for (const number in organization.adminPhoneNumbers) {
-        console.log("checking:", number)
+        // console.log("checking:", number)
         if (number !== sender) { // check to make sure to not send a response from an Admin to themselves
-            console.log("sending msg to:", number)
+            // console.log("sending msg to:", number)
             const msg = await sendMessage(conversation, number, `Text line message: ${contents}`) // from, to, contents
-        } else {
-            console.log("check is the same, not sending", sender, number)
         }
     }
     return status;

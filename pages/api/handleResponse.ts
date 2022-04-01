@@ -21,21 +21,21 @@ export default async function handler(
         data: "testing"
     }
 
-    console.log("new response request");
+    // console.log("new response request");
     if (!req.body.From || !req.body.Body || !req.body.To) {
         return res.json({name: "error", data: "incomplete request"})
     }
     const from = req.body.From;
     const body = req.body.Body;
     const to = req.body.To;
-    console.log(to, from, body);
+    // console.log(to, from, body);
     if (!from || !body || !to) {
-        console.log("INCOMPLETE REQ")
+        // console.log("INCOMPLETE REQ")
         return res.json({name: "error", data: "incomplete request"})
     }
     await handleResponse(to, from, body);
     res.writeHead(200, { "Content-Type": "text/xml" });
-    console.log("twiml")
-    console.log(twiml.toString())
+    // console.log("twiml")
+    // console.log(twiml.toString())
     return res.end(twiml.toString());
 }

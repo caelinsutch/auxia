@@ -21,7 +21,7 @@ export default async function handler(
     const adminPhoneNumber = req.body.adminPhoneNumber;
     const adminName = req.body.adminName;
 
-    console.log(organizationId, adminPhoneNumber, adminName)
+    // console.log(organizationId, adminPhoneNumber, adminName)
 
     if (!organizationId || !adminPhoneNumber || !adminName) {
         return res.json({name: "response", data: {status: 0, data: "error malformed request"}})

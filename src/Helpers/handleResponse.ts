@@ -12,44 +12,33 @@ import getConversation from "./getConversation";
  * @param {string} contents - the contents of the Admin's message to forward
  * */
 const handleResponse = async (conversationLine: string, phoneNumber: string, contents: string) => {
-    console.log("CALLING HANDLE RESPONSE")
+    // console.log("CALLING HANDLE RESPONSE")
     let data;
-    console.log("conversationLine:", conversationLine);
+    // console.log("conversationLine:", conversationLine);
     const response = await conversationLineLookup(conversationLine);
-    console.log(response);
+    // console.log(response);
     if (response.status) {
         data = response.data;
     } else {
         // todo throw error here?
-        console.log("CONVERSATION LINE NOT FOUND")
+        // console.log("CONVERSATION LINE NOT FOUND")
         return;
     }
     const organizationId = data.organizationId;
-    console.log(organizationId)
+    // console.log(organizationId)
     const userNumber = data.userNumber;
-    console.log("GOT CL:", data.userNumber);
-    console.log("GOT orgID:", organizationId);
+    // console.log("GOT CL:", data.userNumber);
+    // console.log("GOT orgID:", organizationId);
 
     const organization = await getOrganization(organizationId);
     const adminPhoneNumbers = organization.adminPhoneNumbers;
-    console.log("adminPhoneNumbers:", organization.adminPhoneNumbers);
-    console.log("typeof phoneNumber", typeof phoneNumber);
-    console.log("phoneNumber:");
-    console.log(phoneNumber);
-    for (const number in adminPhoneNumbers) {
-        console.log(`types: number: ${ typeof number } phoneNumber: ${ typeof phoneNumber }`);
-        console.log(`${ number }===${ phoneNumber }: ${ number.valueOf() === phoneNumber.valueOf() }`)
-    }
-    console.log(Object.keys(organization.adminPhoneNumbers).indexOf(phoneNumber));
-    console.log(organization.adminPhoneNumbers[phoneNumber.valueOf()])
-
     const admin = organization.adminPhoneNumbers[phoneNumber.valueOf()];
 
-    console.log("admin:", admin);
+    // console.log("admin:", admin);
     if (admin) { // the number responding is an Admin
         const conversation = organization.conversations[userNumber].conversationLine
-        console.log("CONVERSATION:", conversation);
-        console.log("SENDING TO ADMINS FROM", conversationLine);
+        // console.log("CONVERSATION:", conversation);
+        // console.log("SENDING TO ADMINS FROM", conversationLine);
         const msg = await sendMessage(organization.organizationId, userNumber, `${organization.messagePrefix} ${contents}`); // send message from the Admin to the User
         // notify other Admins that one Admin has already sent a response
         const notif = await notifyAdmins(
