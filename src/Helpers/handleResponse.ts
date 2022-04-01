@@ -38,12 +38,12 @@ const handleResponse = async (conversationLine: string, phoneNumber: string, con
     console.log(phoneNumber);
     for (const number in adminPhoneNumbers) {
         console.log(`types: number: ${ typeof number } phoneNumber: ${ typeof phoneNumber }`);
-        console.log(`TEST: ${ number } === ${ phoneNumber } : ${ number === phoneNumber }`)
+        console.log(`${ number }===${ phoneNumber }: ${ number.valueOf() === phoneNumber.valueOf() }`)
     }
     console.log(Object.keys(organization.adminPhoneNumbers).indexOf(phoneNumber));
-    console.log(organization.adminPhoneNumbers[phoneNumber])
+    console.log(organization.adminPhoneNumbers[phoneNumber.valueOf()])
 
-    const admin = organization.adminPhoneNumbers[phoneNumber];
+    const admin = organization.adminPhoneNumbers[phoneNumber.valueOf()];
 
     console.log("admin:", admin);
     if (admin) { // the number responding is an Admin
