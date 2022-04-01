@@ -31,11 +31,19 @@ const handleResponse = async (conversationLine: string, phoneNumber: string, con
     console.log("GOT orgID:", organizationId);
 
     const organization = await getOrganization(organizationId);
-    const admin = organization.adminPhoneNumbers[phoneNumber];
 
     console.log("adminPhoneNumbers:", organization.adminPhoneNumbers);
-    console.log("phoneNumber:", phoneNumber);
-    console.log("admin: ", admin)
+    console.log("typeof phoneNumber", typeof phoneNumber);
+    console.log("phoneNumber:");
+    console.log(phoneNumber);
+
+    console.log(Object.keys(organization.adminPhoneNumbers));
+    console.log(organization.adminPhoneNumbers[phoneNumber])
+
+    const admin = organization.adminPhoneNumbers[phoneNumber];
+
+
+    console.log("admin: ", admin);
     if (admin) { // the number responding is an Admin
         const conversation = organization.conversations[userNumber].conversationLine
         console.log("CONVERSATION:", conversation);
