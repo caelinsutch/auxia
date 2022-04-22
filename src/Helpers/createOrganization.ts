@@ -11,7 +11,7 @@ const createOrganization = async (organizationName: string, organizationUniversi
         ownerUserId: ownerPhoneNumber,
         adminPhoneNumbers: {},
         conversations: {},
-        messagePrefix: `TEXTLINE RESPONSE FROM ${ organizationName }:`
+        messagePrefix: `${ organizationName } Risk Team:\n`
     }
 
     const organization = await organizationCollection.doc(newPhoneNumber).set(newOrganization);
