@@ -20,12 +20,14 @@ export default async function handler(
     const organizationUniversity = req.body.organizationUniversity;
     const ownerPhoneNumber = req.body.ownerPhoneNumber;
     const chosenPhoneNumber = req.body.chosenPhoneNumber || "";
+    console.log(organizationName, organizationUniversity, ownerPhoneNumber, chosenPhoneNumber)
 
     if (!organizationName || !organizationUniversity || !ownerPhoneNumber) {
         return res.json({name: "response", data: {status: 0, data: "error malformed request"}})
     }
-
+    console.log("before createOrganization")
     const newOrganization = await createOrganization(organizationName, organizationUniversity, ownerPhoneNumber, chosenPhoneNumber);
+    console.log("after createOrganization", newOrganization)
     if (typeof newOrganization === "object") { // if it has returned the new Organization object
         response.data = "success";
     }
