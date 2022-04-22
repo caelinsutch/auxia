@@ -36,34 +36,6 @@ export default async function handler(
         data: "testing"
     }
 
-    /* testing workflow
-     * Create new organization
-     * Add admin (me) within that organization
-     * Create conversation with new number in that organization
-     * Send a message from a user to the organization number
-     * Hopefully receive message
-     * Remove admin (me)
-     * Send another message and hopefully not receive message
-     * Add admin back to organization admin map
-     *
-     * Create another organization
-     * Add new admin to org
-     * User texts both organization lines independently
-     *
-     * Add original admin to new org
-     * User texts both lines
-     *
-     */
-
-    /*
-    * Number directory
-    *   newOrganization: generated
-    *   ownerPhoneNumber: 516
-    *   newAdmin: ?
-    *   testingNumber: (305) 209-8033
-    *
-    *
-    * */
     const OWNER_PHONE_NUMBER = "+15165517371";
     const TESTING_NUMBER = "+13052098033";
     const ORGANIZATION_ID = "+15105748368";
@@ -80,7 +52,7 @@ export default async function handler(
     //
     // await handleExternal(ORGANIZATION_ID, TESTING_NUMBER, "TESTING");
 
-    const line = await conversationLineLookup("+15108718808");
+    // const line = await conversationLineLookup("+15108718808");
     // console.log(line)
 
     res.json({name: "response", ...response})
