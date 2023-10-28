@@ -5,12 +5,13 @@ const createPhoneNumber = async (chosenNumber: string = "", lineWith: string, is
     let smsUrl;
     let friendlyName;
     let opts = {}
+    const serviceSid = "MGe34bf50b562f44d53faf5381149f7102"
 
     if (isOrganization) {
-        friendlyName = `MAIN LINE number for ${ lineWith }`;
+        friendlyName = `MAIN LINE number for ${lineWith}`;
         smsUrl = "https://auxia-production.up.railway.app/api/handleIncoming"
     } else {
-        friendlyName = `TEXT LINE with ${ lineWith }`;
+        friendlyName = `TEXT LINE with ${lineWith}`;
         smsUrl = "https://auxia-production.up.railway.app/api/handleResponse";
     }
 
@@ -28,11 +29,16 @@ const createPhoneNumber = async (chosenNumber: string = "", lineWith: string, is
             areaCode: "510",
             smsUrl: smsUrl,
             friendlyName: friendlyName,
-            smsMethod: "POST"
+            smsMethod: "POST",
         }
     }
 
     const res = await twilioClient.incomingPhoneNumbers.create(opts);
+
+    await twilioClient.conversations.services(serviceSid)
+        .phoneNumbers
+        .create({sid: res.phoneNumber.sid})
+
     return res.phoneNumber;
 }
 
